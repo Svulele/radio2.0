@@ -344,6 +344,7 @@ body.dark .footer {
   gap: clamp(8px, 2vw, 12px);
   font-size: clamp(0.8em, 2vw, 0.95em);
   color: #ffffff;
+  text-shadow: -3px 2px 3px #000000
 }
 
 /* ============================================================================
