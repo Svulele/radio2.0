@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shave & Gibson Radio</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+<body>
+
+<!-- Login Screen -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-box">
+    <img src="sng.png" alt="Logo" class="login-logo" onerror="this.style.display='none'"/>
+    <h1>🎵 Shave & Gibson Radio</h1>
+    <p>Select your access level to continue</p>
+    
+    <div class="login-buttons">
+      <button class="login-btn user" id="userLoginBtn">
+        <span>👤</span>
+        <span>Continue as Listener</span>
+      </button>
+            <button class="login-btn Admin" id="AdminLoginBtn">
+        <span>👑</span>
+        <span>Login as Admin</span>
+      </button>
+    </div>
+    
+    <div id="passwordSection" class="password-section">
+      <input type="password" id="AdminPassword" class="password-input" placeholder="Enter Password">
+      <button class="login-btn Admin" id="submitPasswordBtn">
+        <span>🔓</span>
+        <span>Access Admin Panel</span>
+      </button>
+      <p id="errorMessage" class="error-message">Incorrect password. Please try again.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Main App -->
+<div id="mainApp" class="main-app">
+  <div class="app-container">
+    <header>
+      <img src="sng.png" alt="Logo" class="logo" onerror="this.style.display='none'"/>
+      <div class="header-right">
+        <div id="userBadge" class="user-badge"></div>
+        <button id="themeToggle">☀️</button>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <!--Upload Section (Hidden for regular users) -->
+      <div id="uploadSection" class="upload-section">
+        <h3>📁 Upload Center</h3>
+        <p>Select a folder containing audio files to upload to the playlist</p>
+        <p class="upload-hint">💡 Name format: <strong>Title - Artist - Requester.mp3</strong></p>
+        <button id="folderBtn">📂 Select Music Folder</button>
+      </div>
+
+      <!-- Timer Display Section -->
+      <div class="timer-section">
+        <div class="mode-info">
+          <div class="mode-icon" id="modeIcon">📻</div>
+          <div>
+            <h2 id="modeTitle">LIVE RADIO</h2>
+            <p id="modeSubtitle">2 Hour Block</p>
+          </div>
+          <div class="timer-display">
+            <div class="timer" id="timerDisplay">02:00:00</div>
+            <p class="timer-label">Until Next Switch</p>
+            <button id="manualSwitchBtn" class="mode-switch-btn">▶▶  Switch to Playlist</button>
+          </div>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="modeProgressFill"></div>
+        </div>
+      </div>
+
+      <div class="radio-container">
+        <!-- Left: Now Playing / Radio -->
+        <div class="now-playing" id="nowPlayingContainer"></div>
+
+        <!-- Right: Playlist & Queue -->
+        <div class="playlist">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+            <h2 style="margin: 0;">Playlist</h2>
+            <button id="shuffleBtn" class="shuffle-btn">⇄  Shuffle</button>
+          </div>
+          <ul id="playlist-list"></ul>
+        </div>
+      </div>
+
+      <!-- System Info Panel -->
+      <div class="system-info">
+        <h3>System Information</h3>
+        <div class="info-grid">
+          <div>
+            <p>Current Mode</p>
+            <p id="modeDisplay">Live Radio</p>
+          </div>
+          <div>
+            <p>Songs Loaded</p>
+            <p id="songsLoaded">0 tracks</p>
+          </div>
+          <div>
+            <p>Playback Status</p>
+            <p id="playbackStatus">Paused</p>
+          </div>
+          <div>
+            <p>In Queue</p>
+            <p id="queueLength">0 tracks</p>
+          </div>
+          <div>
+            <p>Timer Speed</p>
+            <p id="timerSpeed">1x</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+  <meta name="description" content="Shave & Gibson Radio - Your ultimate radio and playlist experience"/>
+  <title>Shave & Gibson Radio</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="preload" as="image" href="Images/imagesng.jpg">
+  <link rel="icon" type="image/png" href="Images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+<!-- Login Screen -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-box">
+    <div class="login-title-wrapper">
+      <p class="login-title line1">
+        <span class="emoji left" role="img" aria-label="dancing woman">🎶</span>Let's
+      </p>
+      <p class="login-title line2">
+        Jam!<span class="emoji right" role="img" aria-label="dancing man">🎶</span>
+      </p>
+    </div>
+    <br>
+    <p class="login-subtitle">Select your access level to continue</p>
+
+    <div class="login-buttons">
+      <button class="login-btn user" id="userLoginBtn" aria-label="Continue as Listener">
+        <span role="img" aria-label="user">👤</span>
+        <span>Continue as Listener</span>
+      </button>
+      <button class="login-btn ceo" id="ceoLoginBtn" aria-label="Login as admin">
+        <span role="img" aria-label="crown">👑</span>
+        <span>Login as admin</span>
+      </button>
+    </div>
+
+    <div id="passwordSection" class="password-section">
+      <input
+        type="password"
+        id="ceoPassword"
+        class="password-input"
+        placeholder="Enter Admin Password"
+        aria-label="Admin Password"
+      />
+      <button class="login-btn ceo" id="submitPasswordBtn" aria-label="Access Admin Panel">
+        <span role="img" aria-label="unlock">🔓</span>
+        <span>Access Admin Panel</span>
+      </button>
+      <p id="errorMessage" class="error-message" role="alert">Incorrect password. Please try again.</p>
+    </div>
+  </div>
+
+  <!-- Footer for Login Page -->
+  <footer class="footer login-footer">
+    <p>&copy; 2025 Shave & Gibson Radio. All rights reserved.</p>
+  </footer>
+</div>
+
+
+<!-- Main App -->
+<div id="mainApp" class="main-app">
+  <div class="app-container">
+    <header>
+      <img src="Images/sng.png" alt="Shave & Gibson Radio Logo" class="logo" onerror="this.style.display='none'"/>
+      <div class="header-right">
+        <div id="userBadge" class="user-badge" role="status"></div>
+        <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <button id="logoutBtn" aria-label="Logout">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- CEO Upload Section (Hidden for regular users) -->
+      <div id="uploadSection" class="upload-section glass-box" role="region" aria-label="Upload Center">
+        <h3>📁 Admin Upload Center</h3>
+        <p>Select a folder containing audio files to upload to the playlist</p>
+        <p class="upload-hint">💡 Name format: <strong>Title - Artist - Requester.mp3</strong></p>
+        <button id="folderBtn" aria-label="Select Music Folder">📂 Select Music Folder</button>
+      </div>
+    
+      <!-- Mode / Switch Section -->
+      <div class="mode-info glass-box" role="region" aria-label="Mode Information">
+        <div class="mode-icon" id="modeIcon" role="img" aria-label="Radio">📻</div>
+        <div class="mode-text">
+          <h2 id="modeTitle">LIVE RADIO</h2>
+          <p class="mode-sub">Bringing the groove, one track at a time 🎶</p>
+        </div>
+        <div class="timer-display">
+          <div class="timer" id="timerDisplay" aria-live="polite">02:00:00</div>
+          <button id="manualSwitchBtn" class="mode-switch-btn" aria-label="Switch Mode">▶▶ Switch to Playlist</button>
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-fill" id="modeProgressFill"></div>
+          </div>
+        </div>
+      </div>
+       
+      <!-- Radio + Playlist --> 
+      <div class="radio-container glass-box">
+        <div class="now-playing" id="nowPlayingContainer" role="region" aria-label="Now Playing" aria-live="polite"></div>
+    
+        <div class="playlist">
+          <div class="playlist-header">
+            <h2>🎧 Playlist</h2>
+            <button id="shuffleBtn" class="shuffle-btn" aria-label="Shuffle Playlist">⇄ Shuffle</button>
+          </div>          
+          <ul id="playlist-list" role="list"></ul>
+        </div>
+      </div>
+    
+      <!-- System Info Panel -->
+      <div class="system-info glass-box" role="region" aria-label="System Information">
+        <h3>⚙️ System Information</h3>
+        <div class="info-grid">
+          <div>
+            <p>Current Mode</p>
+            <p id="modeDisplay">Live Radio</p>
+          </div>
+          <div>
+            <p>Songs Loaded</p>
+            <p id="songsLoaded">0 tracks</p>
+          </div>
+          <div>
+            <p>Playback Status</p>
+            <p id="playbackStatus">Paused</p>
+          </div>
+          <div>
+            <p>In Queue</p>
+            <p id="queueLength">0 tracks</p>
+          </div>
+          <div>
+            <p>Timer Speed</p>
+            <p id="timerSpeed">1x</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer for Main App -->
+    <footer class="footer main-footer">
+      <h3 class="team-heading">I.T LORDS</h3>
+      <div class="team-names">
+        <span>Azande Mnguni</span>
+        <span>Arya Sewcharan</span>
+        <span>Mekalen Naidu</span>
+        <span>Muhammad Adam</span>
+        <span>Sbulele Landa</span>
+        <span>Sonwabile Shinga</span>
+        <span>Ziyaad Moola</span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
