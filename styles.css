@@ -1,9 +1,9 @@
 /* ============================================================================
-   CSS VARIABLES & BASE STYLES
+   CSS VARIABLES & BASE STYLES - OPTIMIZED
    ============================================================================ */
-   html { 
-    scroll-behavior: smooth;}
-
+html { 
+  scroll-behavior: smooth;
+}
 
 :root {
   --accent: #47b7bc;
@@ -37,16 +37,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   overflow-x: hidden;
-  transition: none !important;
+  will-change: background-color, color;
 }
 
 body.dark {
   --text-color: #f8f9fa;
   --bg-overlay: rgba(0, 0, 0, 0.55);
   background-image: url('Images/imagesng.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 body.dark::before {
@@ -57,7 +54,7 @@ body.dark::before {
   backdrop-filter: brightness(0.6);
   -webkit-backdrop-filter: brightness(0.6);
   z-index: -1;
-  transition: all 0.7s ease;
+  transition: opacity 0.7s ease;
 }
 
 body.live-radio {
@@ -71,9 +68,8 @@ main, .controls, .now-playing-container, .playlist-list li {
 }
 
 /* ============================================================================
-   LOGIN SCREEN STYLES
+   LOGIN SCREEN - OPTIMIZED ANIMATIONS
    ============================================================================ */
-
 .login-screen {
   display: flex;
   flex-direction: column;
@@ -95,13 +91,13 @@ main, .controls, .now-playing-container, .playlist-list li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: fadeInUp 0.6s ease;
+  animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -133,15 +129,15 @@ main, .controls, .now-playing-container, .playlist-list li {
   justify-content: center;
   margin: 0;
   position: relative;
-  animation: softFadeUp 1.2s ease-out both;
+  animation: softFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
 }
 
-  .line1 {
-    transform: rotate(-5deg);
-    position: relative;
-    left: clamp(-80px, -5vw, -60px); 
-  }
-  
+.line1 {
+  transform: rotate(-5deg);
+  position: relative;
+  left: clamp(-80px, -5vw, -60px); 
+}
 
 .line2 {
   transform: rotate(5deg);
@@ -154,20 +150,19 @@ main, .controls, .now-playing-container, .playlist-list li {
   vertical-align: middle;
   margin: 0 5px;
   font-size: clamp(40px, 12vw, 50px);
-  animation: emojiSoftPop 1.1s ease-out both;
+  animation: emojiSoftPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
+  will-change: transform, opacity;
 }
 
 .emoji.left {
-  animation-delay: 0.2s;
-  margin-right: 2px; /* make it tighter */
+  animation-delay: 0.15s;
+  margin-right: 2px;
   margin-left: 0;
-  transform: translateX(-30px) rotate(-8deg);
 }
 
 .emoji.right {
-  animation-delay: 0.4s;
-  transform: translateX(-30px) rotate(8deg);
+  animation-delay: 0.3s;
 }
 
 @keyframes emojiSoftPop {
@@ -180,7 +175,6 @@ main, .controls, .now-playing-container, .playlist-list li {
     transform: scale(1) translateY(0); 
   }
 }
-
 
 .login-subtitle {
   color: #e0e0e0;
@@ -203,24 +197,26 @@ main, .controls, .now-playing-container, .playlist-list li {
   font-size: clamp(0.85rem, 2.5vw, 1rem);
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 10px;
+  will-change: transform;
 }
+
 .password-section {
-  display: flex;           /* use flexbox */
-  flex-direction: column;  /* stack children vertically */
-  align-items: center;     /* horizontal centering */
-  gap: 12px;               /* optional spacing between input, button, error */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   margin-top: 20px;
 }
 
 #submitPasswordBtn {
-  display: block;       /* makes margin work */
-  margin: 0 auto;       /* center horizontally */
+  display: block;
+  margin: 0 auto;
 }
 
 .login-btn.ceo {
@@ -250,8 +246,8 @@ main, .controls, .now-playing-container, .playlist-list li {
 }
 
 .password-section.show {
-  display: block;
-  animation: fadeIn 0.3s ease;
+  display: flex;
+  animation: fadeIn 0.25s ease;
 }
 
 @keyframes fadeIn {
@@ -273,7 +269,7 @@ main, .controls, .now-playing-container, .playlist-list li {
   outline: 0;
   background: rgba(255, 255, 255, 0.7);
   margin-bottom: 15px;
-  transition: border-color 0.3s;
+  transition: border-color 0.2s;
   font-size: clamp(0.85rem, 2.5vw, 1rem);
 }
 
@@ -286,7 +282,7 @@ main, .controls, .now-playing-container, .playlist-list li {
   font-size: clamp(0.75rem, 2vw, 0.85rem);
   margin-top: 10px;
   display: none;
-  animation: shake 0.5s;
+  animation: shake 0.4s;
 }
 
 .error-message.show {
@@ -300,29 +296,26 @@ main, .controls, .now-playing-container, .playlist-list li {
 }
 
 /* ============================================================================
-   FOOTER STYLES
+   FOOTER - OPTIMIZED
    ============================================================================ */
-
 .footer {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 15px;
   color: #fff;
   font-size: clamp(0.75rem, 2vw, 0.9em);
-      padding: 0.75rem;
-    border-radius: 8px;
-background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   margin-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-.body.dark .footer{
-background: rgba(30, 30, 30, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
 
+body.dark .footer {
+  background: rgba(30, 30, 30, 0.4);
+}
 
 .login-footer {
   position: relative;
@@ -350,20 +343,19 @@ background: rgba(30, 30, 30, 0.4);
   justify-content: center;
   gap: clamp(8px, 2vw, 12px);
   font-size: clamp(0.8em, 2vw, 0.95em);
-  color: #e6e6e6;
+  color: #ffffff;
 }
 
 /* ============================================================================
-   MAIN APP STYLES
+   MAIN APP - OPTIMIZED
    ============================================================================ */
-
 .main-app {
   display: none;
 }
 
 .main-app.show {
   display: block;
-  animation: fadeIn 0.3s;
+  animation: fadeIn 0.25s;
 }
 
 .app-container {
@@ -374,13 +366,12 @@ background: rgba(30, 30, 30, 0.4);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-radius: 20px;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 /* ============================================================================
-   HEADER STYLES
+   HEADER - OPTIMIZED
    ============================================================================ */
-
 header {
   display: flex;
   justify-content: space-between;
@@ -392,15 +383,13 @@ header {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 body.dark header {
   background: rgba(40, 40, 40, 0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 }
 
 header .logo {
@@ -444,7 +433,8 @@ header .logo {
   cursor: pointer;
   font-size: clamp(0.7rem, 2vw, 0.85rem);
   font-weight: 600;
-  transition: all 0.2s;
+  transition: transform 0.2s, background 0.2s;
+  will-change: transform;
 }
 
 #logoutBtn {
@@ -472,21 +462,21 @@ header .logo {
 }
 
 /* ============================================================================
-   GLASS BOX EFFECT
+   GLASS BOX - OPTIMIZED
    ============================================================================ */
-
 .glass-box {
   position: relative;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px) saturate(150%) contrast(1.02);
-  -webkit-backdrop-filter: blur(20px) saturate(150%) contrast(1.02);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
   box-shadow: 0 8px 30px rgba(4, 10, 20, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.03);
   padding: clamp(12px, 3vw, 18px);
   color: var(--text-on-glass);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
+  will-change: transform;
 }
 
 .glass-box::before {
@@ -505,8 +495,8 @@ header .logo {
 }
 
 .glass-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 50px rgba(4, 10, 20, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(4, 10, 20, 0.55);
 }
 
 body.dark .glass-box {
@@ -520,9 +510,8 @@ body.dark .glass-box {
 }
 
 /* ============================================================================
-   UPLOAD SECTION (CEO ONLY)
+   UPLOAD SECTION
    ============================================================================ */
-
 .upload-section {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
@@ -532,7 +521,7 @@ body.dark .glass-box {
   margin: 15px 0;
   text-align: center;
   display: none;
-  transition: all 0.3s;
+  transition: all 0.25s;
 }
 
 .upload-section:hover {
@@ -542,10 +531,6 @@ body.dark .glass-box {
 
 body.dark .upload-section {
   background: linear-gradient(135deg, rgba(0, 174, 239, 0.05), rgba(0, 137, 150, 0.05));
-}
-
-body.dark .upload-section:hover {
-  background: linear-gradient(135deg, rgba(0, 174, 239, 0.1), rgba(0, 137, 150, 0.1));
 }
 
 .upload-section h3 {
@@ -563,20 +548,12 @@ body.dark .upload-section:hover {
   margin-bottom: 10px;
 }
 
-body.dark .upload-section p {
-  color: #ffff;
-}
-
 .upload-hint {
   background: rgba(0, 137, 150, 0.1);
   padding: 8px 12px;
   border-radius: 8px;
   margin: 10px 0 15px 0;
   font-size: clamp(0.7rem, 2vw, 0.8rem) !important;
-}
-
-body.dark .upload-hint {
-  background: rgba(0, 174, 239, 0.15);
 }
 
 #folderBtn {
@@ -588,8 +565,9 @@ body.dark .upload-hint {
   cursor: pointer;
   font-size: clamp(0.8rem, 2.5vw, 0.95rem);
   font-weight: 700;
-  transition: all 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 12px rgba(0, 137, 150, 0.3);
+  will-change: transform;
 }
 
 #folderBtn:hover {
@@ -597,14 +575,9 @@ body.dark .upload-hint {
   box-shadow: 0 6px 16px rgba(0, 137, 150, 0.4);
 }
 
-#folderBtn:active {
-  transform: translateY(0);
-}
-
 /* ============================================================================
-   MODE INFO SECTION
+   MODE INFO - OPTIMIZED
    ============================================================================ */
-
 .mode-info {
   display: flex;
   align-items: center;
@@ -622,7 +595,7 @@ body.dark .upload-hint {
   justify-content: center;
   font-size: clamp(1rem, 3vw, 1.2rem);
   flex-shrink: 0;
-  animation: modeGlow 2.5s infinite ease-in-out;
+  animation: modeGlow 2s infinite ease-in-out;
 }
 
 .mode-text {
@@ -651,11 +624,6 @@ body.dark .upload-hint {
   font-size: clamp(0.65rem, 2vw, 0.75rem);
 }
 
-body.dark .mode-info p {
-  color: #f8f8f8;
-  text-shadow: 0 0 5px rgba(0, 174, 239, 0.5);
-}
-
 .timer-display {
   text-align: center;
   margin-left: auto;
@@ -672,11 +640,6 @@ body.dark .mode-info p {
   margin-bottom: 0;
 }
 
-body.dark .timer {
-  color: #0cf1fb;
-  text-shadow: -4px 0px 4px #827878;
-}
-
 .mode-switch-btn {
   padding: clamp(6px, 1.5vw, 8px) clamp(15px, 3vw, 20px);
   font-size: clamp(0.75rem, 2vw, 0.85rem);
@@ -686,19 +649,16 @@ body.dark .timer {
   cursor: pointer;
   background: var(--mode-color);
   color: white;
-  transition: all 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 3px 10px var(--mode-glow);
   margin-top: 8px;
-  animation: modeGlow 2.5s infinite ease-in-out;
+  animation: modeGlow 2s infinite ease-in-out;
+  will-change: transform;
 }
 
 .mode-switch-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px var(--mode-glow);
-}
-
-.mode-switch-btn:active {
-  transform: translateY(0);
 }
 
 .progress-bar {
@@ -719,7 +679,8 @@ body.dark .progress-bar {
   width: 0%;
   background: #47b7bc;
   border-radius: 10px;
-  transition: width 0.3s ease, background 0.5s ease, box-shadow 0.5s ease;
+  transition: width 0.3s ease, background 0.3s ease;
+  will-change: width;
 }
 
 @keyframes modeGlow {
@@ -737,31 +698,27 @@ body.dark .progress-bar {
 }
 
 @keyframes playlistShimmer {
-  0% {
+  0%, 100% {
     text-shadow: 0 0 2px #0cf1fb, 0 0 4px #0cf1fb, 1px 1px 3px #000;
   }
   50% {
     text-shadow: 0 0 6px #0cf1fb, 0 0 10px #0cf1fb, 1px 1px 4px #000;
   }
-  100% {
-    text-shadow: 0 0 2px #0cf1fb, 0 0 4px #0cf1fb, 1px 1px 3px #000;
-  }
 }
 
 .live-radio-animation {
-  animation: livePulse 1.8s infinite ease-in-out;
+  animation: livePulse 1.5s infinite ease-in-out;
   color: #FF0000;
 }
 
 .playlist-animation {
-  animation: playlistShimmer 2.5s infinite ease-in-out;
+  animation: playlistShimmer 2s infinite ease-in-out;
   color: #0cf1fb;
 }
 
 /* ============================================================================
-   RADIO CONTAINER & PLAYLIST
+   RADIO CONTAINER - OPTIMIZED
    ============================================================================ */
-
 .radio-container {
   display: flex;
   gap: 0.75rem;
@@ -776,7 +733,7 @@ body.dark .progress-bar {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: background 0.25s ease;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -784,8 +741,6 @@ body.dark .progress-bar {
 
 body.dark .now-playing {
   background: rgba(30, 30, 30, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .playlist {
@@ -804,8 +759,6 @@ body.dark .now-playing {
 
 body.dark .playlist {
   background: rgba(30, 30, 30, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .playlist-header {
@@ -824,11 +777,6 @@ body.dark .playlist {
   text-shadow: -3px 2px 3px #000000;
 }
 
-body.dark .playlist h2 {
-  color: #0cf1fb;
-  text-shadow: -3px 2px 3px #000000;
-}
-
 .shuffle-btn {
   background: #47b7bc;
   color: #fff;
@@ -838,16 +786,13 @@ body.dark .playlist h2 {
   font-weight: 600;
   font-size: clamp(0.7rem, 2vw, 0.8rem);
   cursor: pointer;
-  transition: background 0.25s, transform 0.2s;
+  transition: background 0.2s, transform 0.2s;
+  will-change: transform;
 }
 
 .shuffle-btn:hover {
   background: #3aa3a9;
   transform: scale(1.05);
-}
-
-.shuffle-btn:active {
-  transform: translateY(0);
 }
 
 .playlist ul {
@@ -893,9 +838,8 @@ body.dark .playlist::-webkit-scrollbar-track {
 }
 
 /* ============================================================================
-   CONTROLS & VOLUME
+   CONTROLS - OPTIMIZED
    ============================================================================ */
-
 .controls {
   text-align: center;
   margin-top: 10px;
@@ -910,16 +854,13 @@ body.dark .playlist::-webkit-scrollbar-track {
   background: #008996;
   color: #fff;
   font-size: clamp(0.75rem, 2vw, 0.85rem);
-  transition: all 0.2s;
+  transition: transform 0.2s, background 0.2s;
+  will-change: transform;
 }
 
 .controls button:hover {
   background: #007580;
   transform: translateY(-2px);
-}
-
-.controls button:active {
-  transform: translateY(0);
 }
 
 .controls button:disabled {
@@ -945,8 +886,9 @@ body.dark .playlist::-webkit-scrollbar-track {
   border: none;
   color: white;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: transform 0.2s ease, background 0.2s;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  will-change: transform;
 }
 
 .volume-control {
@@ -966,7 +908,7 @@ body.dark .playlist::-webkit-scrollbar-track {
   padding: clamp(5px, 1.5vw, 6px) clamp(10px, 2.5vw, 12px) !important;
   min-width: 45px;
   border-radius: 10px;
-  transition: all 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .mute-btn:hover {
@@ -976,14 +918,6 @@ body.dark .playlist::-webkit-scrollbar-track {
 .mute-btn.muted {
   background: #dc3545 !important;
   border-color: #dc3545 !important;
-  color: white;
-}
-
-body.light .mute-btn {
-  color: var(--accent-color, #008996);
-}
-
-body.light .mute-btn.muted {
   color: white;
 }
 
@@ -1006,7 +940,7 @@ body.light .mute-btn.muted {
   background: var(--accent-color, #008996);
   cursor: pointer;
   border: none;
-  transition: all 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 
 .volume-slider::-moz-range-thumb {
@@ -1016,7 +950,7 @@ body.light .mute-btn.muted {
   background: var(--accent-color, #008996);
   cursor: pointer;
   border: none;
-  transition: all 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 
 .volume-slider::-webkit-slider-thumb:hover,
@@ -1033,14 +967,9 @@ body.light .mute-btn.muted {
   min-width: 45px;
 }
 
-body.dark .volume-value {
-  color: var(--accent-hover, #00aeef);
-}
-
 /* ============================================================================
    SONG DISPLAY
    ============================================================================ */
-
 .song-display {
   position: relative;
   margin-top: 8px;
@@ -1083,7 +1012,6 @@ body.dark .song-display {
 /* ============================================================================
    SYSTEM INFO
    ============================================================================ */
-
 .system-info {
   margin-top: 1rem;
   padding: 0.75rem;
@@ -1092,9 +1020,7 @@ body.dark .song-display {
 }
 
 body.dark .system-info {
-    background: rgba(30, 30, 30, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+  background: rgba(30, 30, 30, 0.4);
 }
 
 .system-info h3 {
@@ -1103,11 +1029,6 @@ body.dark .system-info {
   text-shadow: -3px 2px 3px #000000;
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   font-weight: 900;
-}
-
-body.dark .system-info h3 {
-  color: #0cf1fb;
-  text-shadow: -3px 2px 3px #000000;
 }
 
 .info-grid {
@@ -1130,13 +1051,67 @@ body.dark .info-grid div p:first-child {
   font-weight: bold;
   margin: 0;
   font-size: clamp(0.75rem, 2vw, 0.85rem);
-  
+}
+
+/* ============================================================================
+   VOICE TOGGLE
+   ============================================================================ */
+.voice-toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(0, 137, 150, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 137, 150, 0.3);
+}
+
+body.dark .voice-toggle-container {
+  background: rgba(0, 174, 239, 0.08);
+  border-color: rgba(0, 174, 239, 0.2);
+}
+
+.voice-toggle-label {
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+
+.voice-toggle-btn {
+  padding: clamp(6px, 1.5vw, 8px) clamp(15px, 3vw, 20px);
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  min-width: 80px;
+  will-change: transform;
+}
+
+.voice-toggle-btn.on {
+  background: #05b2b9;
+  color: white;
+}
+
+.voice-toggle-btn.off {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.voice-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================================================
    RESPONSIVE DESIGN
    ============================================================================ */
-
 @media (max-width: 768px) {
   .info-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1190,70 +1165,6 @@ body.dark .info-grid div p:first-child {
   }
 }
 
-/* ============================================================================
-   VOICE TOGGLE BUTTON
-   ============================================================================ */
-
-.voice-toggle-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 15px;
-  padding: 12px;
-  background: rgba(0, 137, 150, 0.1);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 137, 150, 0.3);
-}
-
-body.dark .voice-toggle-container {
-  background: rgba(0, 174, 239, 0.08);
-  border-color: rgba(0, 174, 239, 0.2);
-}
-
-.voice-toggle-label {
-  font-size: clamp(0.75rem, 2vw, 0.85rem);
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  user-select: none;
-}
-
-body.dark .voice-toggle-label {
-  color: #f5f5f5;
-}
-
-.voice-toggle-btn {
-  padding: clamp(6px, 1.5vw, 8px) clamp(15px, 3vw, 20px);
-  font-size: clamp(0.75rem, 2vw, 0.85rem);
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  min-width: 80px;
-}
-
-.voice-toggle-btn.on {
-  background: #05b2b9;
-  color: white;
-}
-
-.voice-toggle-btn.off {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: white;
-}
-
-.voice-toggle-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.voice-toggle-btn:active {
-  transform: translateY(0);
-}
-
 @media (max-width: 480px) {
   .voice-toggle-container {
     flex-direction: column;
@@ -1261,17 +1172,6 @@ body.dark .voice-toggle-label {
   }
   
   .voice-toggle-btn {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .speed-control {
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .speed-btn {
     width: 100%;
   }
 
@@ -1336,9 +1236,8 @@ body.dark .voice-toggle-label {
 }
 
 /* ============================================================================
-   ACCESSIBILITY IMPROVEMENTS
+   ACCESSIBILITY & PERFORMANCE
    ============================================================================ */
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1358,7 +1257,6 @@ input:focus-visible {
 /* ============================================================================
    PRINT STYLES
    ============================================================================ */
-
 @media print {
   .login-screen,
   .upload-section,
@@ -1381,9 +1279,8 @@ input:focus-visible {
 }
 
 /* ============================================================================
-   LANDSCAPE ORIENTATION OPTIMIZATIONS
+   LANDSCAPE OPTIMIZATIONS
    ============================================================================ */
-
 @media (orientation: landscape) and (max-height: 600px) {
   .login-screen {
     padding: 10px;
@@ -1404,9 +1301,8 @@ input:focus-visible {
 }
 
 /* ============================================================================
-   HIGH CONTRAST MODE SUPPORT
+   HIGH CONTRAST MODE
    ============================================================================ */
-
 @media (prefers-contrast: high) {
   .glass-box {
     border: 2px solid currentColor;
@@ -1424,10 +1320,21 @@ input:focus-visible {
 /* ============================================================================
    DARK MODE PREFERENCE
    ============================================================================ */
-
 @media (prefers-color-scheme: dark) {
   body:not(.light) {
     --text-color: #f8f9fa;
     --bg-overlay: rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* ============================================================================
+   MODAL ANIMATIONS - OPTIMIZED
+   ============================================================================ */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

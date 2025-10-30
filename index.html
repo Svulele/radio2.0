@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
   <meta name="description" content="Shave & Gibson Radio - Your ultimate radio and playlist experience"/>
   <title>Shave & Gibson Radio</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <link rel="preload" as="image" href="Images/imagesng.jpg">
-  <link rel="icon" type="image/png" href="Images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  
+  <!-- Preconnect to external resources for faster loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" as="image" href="Images/imagesng.jpg">
+  <link rel="preload" as="style" href="styles.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Images/favicon.ico">
 </head>
 <body>
 
@@ -156,6 +166,7 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<!-- Defer JavaScript loading for better performance -->
+<script src="script.js" defer></script>
 </body>
 </html>
